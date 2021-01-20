@@ -1,0 +1,10 @@
+[switch]
+# define your devices, by using the IP or FQDN
+# example
+# 192.168.21.14 
+# you can also specify some variables to a specific device, like trunk_interface, which can be used in the playbook by access {{ trunk_interface }}
+# 192.168.21.15 trunk_interface=GigabitEthernet0/0
+
+[router]
+# you can also define some ranges, like here [11:12]
+# 192.168.21.[11:12]

@@ -1,0 +1,19 @@
+---
+- name: Sample IOS show version
+  hosts: router 
+  gather_facts: no
+
+  tasks:
+
+  -  name: GATHERING FACTS
+     ios_facts:
+       gather_subset: hardware
+      register: hardwarefacts
+  
+
+  - name: Device without version 16.08.01a
+    debug:
+      var: ansible_net_version
+    when: ansible_net_version != "16.08.1a"
+
+  - name: 

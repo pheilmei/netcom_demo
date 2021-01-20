@@ -1,0 +1,2 @@
+device_type,host,username,password,secret
+cisco_xe,1.1.1.1, user, password, secret

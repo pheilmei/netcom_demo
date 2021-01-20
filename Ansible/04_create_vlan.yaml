@@ -1,0 +1,28 @@
+---
+- name: Sample create VLAN on IOS Switch
+  hosts:  switch
+  gather_facts: no
+
+  tasks:
+  -  name: create VLAN 
+     cisco.ios.ios_vlans:
+       config:
+         - name: VLAN_50
+           vlan_id: 50
+           state: active
+           shutdown: disabled
+         - name: VLAN_51
+           vlan_id: 51
+           state: active
+           shutdown: disabled
+       state: merged
+
+
+  - name: add VLANS to trunk ports
+    cisco.ios.ios_l2_interfaces:
+      config:
+      - name: "{{ trunk_interface }}"
+        mode: trunk
+        trunk:
+           allowed_vlans: 50-51
+      state: merged

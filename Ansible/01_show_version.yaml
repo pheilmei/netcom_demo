@@ -1,0 +1,14 @@
+---
+- name: "Sample show version"
+  hosts: router 
+  gather_facts: no
+
+  tasks:
+    - name: "run show version"
+      ios_command:
+        commands: show version
+        wait_for: result[0] contains IOS
+      register: myversion
+
+    - debug:
+        var: myversion
